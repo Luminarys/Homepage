@@ -1,0 +1,225 @@
+﻿    <!DOCTYPE html>
+    <!--TODO : unweebafy-->
+    <!-- homepage by noha javascript by nullbyte -->
+     
+    <html>
+     
+    <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="animations.css">
+     
+    <title>Start Page</title>
+     
+    </head>
+    <style>
+	
+    a {
+            color: #999999;
+            font-family: "Segoe UI";
+            font-size: 25px;
+            text-decoration: none;
+            margin-left: 5px;
+            transition-property: color;
+            transition-duration: .1s;
+            transition-timing-function: linear;
+    }
+    body {
+            padding-left: 10px;
+            padding-right: 10px;
+            font-family: "Segoe UI";
+            color: #c8c8c8;
+            font-size: 34px;
+            background: #fbfbfb;
+    }
+     
+    span {
+            margin-left: 10px;
+            text-family: "Segoe UI";
+            text-align: center;
+    }
+     
+    a:hover {
+			color: #5f5f65
+	}
+     
+    input[type=text] {
+            width: 18px;
+            padding: 3px;
+            position: absolute;
+            right: 5px; bottom: 5px;
+            border: 1px solid #e6e6e6;
+            transition-property: all;
+            transition-duration: .5s;
+            transition-timing-function: ease;
+            color: #999999;
+			background-position: -2px -1px;
+			background-image: url('https://i.imgur.com/ziSic3u.png');
+			background-repeat: no-repeat;
+    }
+     
+    input[type=text]:hover {
+            border-color: #999999;
+            transition-property: all;
+            transition-duration: .5s;
+            transition-timing-function: ease;
+            color: #999999;
+			width: 230px;
+			background-position: 227px -1px;
+			padding-right: 20px;
+    }
+	input[type=text]:focus {
+            border-color: #999999;
+            transition-property: all;
+            transition-duration: .5s;
+            transition-timing-function: ease;
+            color: #999999;
+			width: 230px;
+			background-position: 227px -1px;
+			padding-right: 20px;
+	}
+     
+    .boxed {
+            border: 1px solid #e6e6e6;
+            padding: 5px;
+            color: #494949;
+            background-color: #ffffff;
+            width: 760px;
+            margin-left: -390px;
+            margin-right: auto;
+            position: absolute;
+            left: 50%;
+			top: 40%;
+    }
+     
+    h1 {
+          padding-bottom: -600px;
+		  position: absolute;
+		  visibility: hidden;
+		  margin-top: -200px;
+		  margin-left: -380px;
+		  left: 50%;
+		  top: 40%;
+		  
+    }
+     
+    </style>
+
+            <body>
+			
+            <h1 align="center" id="message" class="expandUp"></h1>
+                <script type="text/javascript">
+                        var d = new Date();
+                        var n = d.getHours();
+ 
+                        if ( n == 23 || n == 0) {
+                                message = "<img src='goodnight1.png'></img>";
+                        } else if ( n >= 1 && n <= 4 ) {
+                                message = "<img src='goodnight1.png'></img>";
+                        } else if ( n >= 5 && n <= 11 ) {
+                                message = "<img src='goodmorning1.png'></img>";
+                        } else if ( n >= 12 && n <= 17 ) {
+                                message = "<img src='goodafternoon1.png'></img>";
+                        } else if ( n >= 18 && n <= 22 ) {
+                                message = "<img src='goodevening1.png'></img>";
+                        }
+ 
+                        document.getElementById("message").innerHTML = message;
+				var search=[ // Search engines
+    						["",    "https://new.startpage.com/do/metasearch.pl?query="],   // Startpage (Default)
+    						["!g",  "https://www.google.com/#q="],                           // Google
+    						["!i",  "https://www.google.com/search?tbm=isch&q="],            // Google Images
+    						["!y",  "https://www.youtube.com/results?search_query="],       // YouTube
+    						["!w",  "http://en.wikipedia.org/w/index.php?search="],         // Wikipedia
+    						["!m",  "http://www.imdb.com/find?q="],    						                     // IMDb
+    						["!u",  "http://www.urbandictionary.com/define.php?term="],     // Urban Dictionary
+];
+				var ss="";
+				function handleQuery(e,q) { // Handle search query
+    					var key=e.keyCode || e.which;
+    					if(key==13) { // enter
+						$('#query').val('');
+        					if(q.lastIndexOf("!")!=-1) {
+            						var x=q.lastIndexOf("!"),found=false;
+            
+            						for(var i=0;i<search.length;i++) {
+                						if(search[i][0]==q.substr(x)) { // Find "!?"
+                    						found=true; window.location=search[i][1]+q.substr(0,x);
+                						}
+            						}
+            						if(!found) { // Invalid "!?", use default
+            							window.location=search[0][1]+q.substr(0,x);
+            						}
+        						} else { // "!?" where not specified, use default
+								console.log(ss+q.replace(/&/g,"%26"));
+            							window.location=search[0][1]+q;
+        						}
+    					}
+				}
+                </script>
+				
+            <div class="boxed" class=slideUp>
+			
+            <span> <img src="diem.png"></span>
+            <a style="padding-left:10px" href="https://github.com">github</a>
+			<a href="https://mail.google.com">gmail</a>
+			<a href="https://mail.whatever.com">mail</a>
+			<a href="https://www.google.com/calendar">calendar</a>
+            </br>
+			
+            <span> <img src="media.png"></span>
+            <a style="padding-left:10px" href="https://www.youtube.com/feed/subscriptions">youtube</a>
+			<a href="https://news.ycombinator.com/news">hn</a>
+			<a href="https://what.cd">what</a>
+			<a href="https://animebytes.tv">ab</a>
+			<a href="https://awesome-hd.net/index.php">ahd</a>
+			<a href="https://last.fm">lfm</a>
+			<a href="https://fuwa.se">fuwa</a>
+            </br>
+			<span> <img src="4chan.png"></span>
+			<a style="padding-left:10px" href="https://boards.4chan.org/g/catalog">technology</a>
+			<a  href="https://boards.4chan.org/a/catalog">anime</a>
+			<a href="https://boards.4chan.org/c/catalog">cute</a>
+			<a href="https://boards.4chan.org/lit/catalog">literature</a>
+			</br>
+			
+			
+            <span> <img src="school.png"></span>
+			<a style="padding-left:10px" href="some link here">connect</a>
+			<a href="some link here">courses</a>
+			<a href="some link here">grades</a>
+			<a href="some link here">gateway</a>
+			<input type="text" id="query" placeholder="" value="" onkeypress="javascript:handleQuery(event,this.value);" name="q">
+            </div>
+
+				<script>
+				$(window).scroll(function() {
+					$('#animatedElement').each(function(){
+					var imagePos = $(this).offset().top;
+
+					var topOfWindow = $(window).scrollTop();
+						if (imagePos < topOfWindow+400) {
+							$(this).addClass("slideUp");
+						}
+					});
+				});
+				</script>
+				
+			</body>
+                <script type="text/javascript">
+                    document.addEventListener("DOMContentLoaded", function(event) { 
+                        var d = new Date();
+                        var n = d.getHours();
+                        if ( n == 23 || n == 0) {
+                        } else if ( n >= 1 && n <= 4 ) {
+                        } else if ( n >= 5 && n <= 11 ) {
+                        } else if ( n >= 12 && n <= 17 ) {
+                        } else if ( (n >= 18 && n <= 24) || (n >= 0 && n <= 5)) {
+                                 $("html").css("min-height", "100%");
+                                 $("body").css("background", "url(patchy.png) no-repeat right bottom");
+                                 //$("body").css("background-position", "top");
+                        }
+                    });
+                </script>
+
+    </html>
